@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println("Exercicio 2\n");
         System.out.println("Digite uma palavra e verifique se e Palindrome: ");
-        System.out.println(isPalindrome(scan.next()));
+        System.out.println(isPalindrome(scan.nextLine()));
     }
 
     public static void ticoTeco() {
@@ -43,7 +43,13 @@ public class Main {
     }
 
     public static boolean isPalindrome(String s) {
-        s = s.toLowerCase();
+        s = s.replaceAll("á|à|â|ã|ä","a")
+                .replaceAll("é|è|ê|ë","e")
+                .replaceAll("ó|ò|ô|õ","o")
+                .replaceAll("ú|ù|û|ũ","u")
+                .replaceAll(" ", "")
+                .replaceAll("\\p{Punct}", "")
+                .toLowerCase();
         String aux = new StringBuilder(s).reverse().toString();
         return s.equals(aux) ? true : false;
     }
